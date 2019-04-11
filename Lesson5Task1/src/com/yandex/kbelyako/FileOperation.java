@@ -36,8 +36,7 @@ public class FileOperation {
 		for (File file : fileList) {
 			fileName = file.getName();
 			File outFile = new File(outPathStr + fileName);
-			copyFile(file, outFile);
-			int byteread = 0;
+			copyFile(file, outFile);			
 		}
 
 	}
