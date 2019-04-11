@@ -2,12 +2,16 @@ package com.yandex.kbelyako;
 
 import java.io.File;
 import java.io.FileFilter;
+
 public class MyFileFilter implements FileFilter {
+	
 private String[] arr;
+
 public MyFileFilter(String... arr) {
 super();
 this.arr = arr;
 }
+
 private boolean check(String ext) {
 for (String stringExt : arr) {
 if (stringExt.equals(ext)) {

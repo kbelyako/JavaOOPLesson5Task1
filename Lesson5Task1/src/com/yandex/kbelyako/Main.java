@@ -4,40 +4,44 @@ import java.io.File;
 import java.io.IOException;
 public class Main {
 public static void main(String[] args) {
+	
 MyFileFilter mFF = new MyFileFilter("docx", "pdf");
-File folder = new File("C:/Users/kbelyakov/Desktop/OMC ADM/Новая папка/Java/OOP");
-File testFolder = new File("TestJ");
-testFolder.mkdirs();
-//File[] fileList = folder.listFiles(mFF);
-File[] fileList = folder.listFiles();
-for (File file : fileList)
-{
-System.out.println(file);
-}
 
-File content=new File (".");
-
-FileOperation.list(content);
-
-/*File[] fileArray=content.listFiles();
- for (File fileone : fileArray) {
-	long fileSize=fileone.length();
-	String type=(fileone.isFile()) ? "File":"Folder";
-	System.out.println(fileone.getName()+"\t"+type+"\t"+fileSize);
-}*/
-
-File in = new File("C:/Users/kbelyakov/Desktop/OMC ADM/Новая папка/Java/OOP/Java OOP (All cource).pdf");
-File out = new File("book.pdf");
+File root = new File(".");
+File copySource = new File("CopySource");
+File copyTarget = new File("CopyTarget");
+File testFile = new File(copySource,"Test.txt");
 
 try {
-	FileOperation.copyFile(in, out);
+	testFile.createNewFile();
+} catch (IOException e1) {
+	// TODO Auto-generated catch block
+	e1.printStackTrace();
+}
+
+FileOperation.list(root); 
+
+copySource.mkdirs();
+copyTarget.mkdirs();
+
+FileOperation.list(root);
+
+System.out.println("Before copy target:");
+FileOperation.list(copyTarget);
+
+try {
+	FileOperation.copyFilesExt(copySource, copyTarget, "txt");
 } catch (IOException e) {
 	// TODO Auto-generated catch block
 	e.printStackTrace();
+	
 }
 
-System.out.println("After copy:");
-FileOperation.list(content);
+System.out.println("After copy, target:");
+File  copyedfTestFile= new File(copyTarget, testFile.getName());
+FileOperation.list(copyTarget);
+copyedfTestFile.delete();
+
 
 
 }
