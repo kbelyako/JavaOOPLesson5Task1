@@ -23,7 +23,6 @@ public class FileOperation {
 	public static void copyFilesExt(File inPath, File outPath, String fileExt)
 			throws IOException {
 		String fileName;
-		byte[] bufer = new byte[1024 * 1024 * 8];
 		MyFileFilter mFF = new MyFileFilter(fileExt);
 		String inPathStr = inPath.getAbsolutePath();
 		if (inPathStr.charAt(inPathStr.length() - 1) != '/') {
